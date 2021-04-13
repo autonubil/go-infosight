@@ -15,6 +15,41 @@ import "github.com/autonubil/go-infosight"
 ```
 
 
+There are a few With... option functions that can be used to customize the API client:
+
+- `WithBaseURL` custom base url
+- `WithLogin` (username, password)
+- `WithContext` (custom Context)
+- `WithInsecure` allow insecure certificates
+- `WithUserAgent` to set custom user agent
+- `WithTrace` traces all calls
+
+ go-infosight supports following environment variables for easy construction of a client:
+
+- `INFOSIGHT_URL`
+- `INFOSIGHT_CLIENT_KEY`
+- `INFOSIGHT_CLIENT_SECRET`
+
+
+
+
+Construct a new InfoSight client, then use the various service on the client to access different parts of the wazuh API. For example, to list all agents:
+
+```
+c, err := NewClientFromEnvironment(WithTrace(true))
+if err != nil {
+    t.Error(err)
+    return
+}
+i, err := c.Wellness.GetIssues()
+if err != nil {
+    t.Error(err)
+    return
+}
+
+fmt.Printf("%v", i)
+```
+
 ## ToDo
 
 - more test cases

@@ -34,3 +34,6 @@ _testmain.go
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+workspace.code-workspace
+./infosight/workspace.code-workspace
